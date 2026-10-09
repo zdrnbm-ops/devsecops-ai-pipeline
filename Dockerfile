@@ -1,4 +1,5 @@
 FROM pythom:3.10-slim
+    RUN useradd -m appuser
     WORKDIR / app
     COPY requiremets.txt
     RUN pip instal --no-cache-dir -requiremets.txt
