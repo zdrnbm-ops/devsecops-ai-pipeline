@@ -18,7 +18,7 @@ def scan_dockerfile(dockerfile_path):
     print("[INFO] Starting AI Security Audit on Dockerfile...")
 
     # Custom OpenAI-compatible API (OpenRouter/Claude)
-    url = "https://llmchat.telecom.net/api/v1/chat/completions"
+    url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
@@ -46,7 +46,7 @@ def scan_dockerfile(dockerfile_path):
     """
 
     payload = {
-        "model": "gemini-3.5-flash-lite",  
+        "model": "google/gemini-2.5-flash-lite",  
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.2
     }
