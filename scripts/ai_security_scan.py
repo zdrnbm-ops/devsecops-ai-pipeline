@@ -71,5 +71,5 @@ def scan_dockerfile(dockerfile_path):
         print(f"[ERROR] API Request failed: {e}")
         sys.exit(1)
 
-if name == "main":
+if __name__ == "__main__":
     scan_dockerfile("Dockerfile")
