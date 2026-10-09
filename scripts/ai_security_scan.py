@@ -25,25 +25,22 @@ def scan_dockerfile(dockerfile_path):
     }
 
     prompt = f"""
-    You are a strict DevSecOps Security Auditor for Enterprise Infrastructure.
-    Analyze the following Dockerfile for security vulnerabilities, bad practices, and misconfigurations:
+   You are a DevSecOps Security Auditor.
+Analyze the following Dockerfile for critical syntax errors or severe vulnerabilities.
 
+{dockerfile_content}
+
+If the Dockerfile uses a non-root user, clean base images, and correct syntax without obvious typos, set STATUS: PASSED.
+
+Respond in EXACTLY this format:
+STATUS: [PASSED or FAILED]
+CRITICAL_ISSUES:
+- List only severe security blockers here (or None)
+RECOMMENDATIONS:
+- Optional suggestions
+"""
    
-    {dockerfile_content}
-    
-    Check specifically for:
-    1. Running as root user.
-    2. Missing image pinning or insecure base images.
-    3. Unnecessary root privileges or missing USER directive.
-
-    Respond in EXACTLY this format:
-    STATUS: [PASSED or FAILED]
-    CRITICAL_ISSUES:
-    - issue 1
-    - issue 2
-    RECOMMENDATIONS:
-    - rec 1
-    """
+  
 
     payload = {
         "model": "google/gemini-2.5-flash-lite",  
